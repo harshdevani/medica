@@ -110,20 +110,22 @@ class LoginView extends GetView<LoginController> {
                       color: Colors.grey,
                     ),
                   ),
-                  suffixIcon: Obx(() => IconButton(
-                        onPressed: () {
-                          controller.visiblity = !controller.visiblity;
-                        },
-                        icon: controller.visiblity
-                            ? const Icon(
-                                Icons.visibility,
-                                color: Colors.grey,
-                              )
-                            : const Icon(
-                                Icons.visibility_off,
-                                color: Colors.grey,
-                              ),
-                      )),
+                  suffixIcon: Obx(
+                    () => IconButton(
+                      onPressed: () {
+                        controller.visiblity = !controller.visiblity;
+                      },
+                      icon: controller.visiblity
+                          ? const Icon(
+                              Icons.visibility,
+                              color: Colors.grey,
+                            )
+                          : const Icon(
+                              Icons.visibility_off,
+                              color: Colors.grey,
+                            ),
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -262,7 +264,7 @@ class LoginView extends GetView<LoginController> {
                     ),
                     TextButton(
                         onPressed: () {
-                          Get.toNamed(Routes.FORGET_PASSWORD);
+                          Get.toNamed(Routes.SIGN_UP);
                         },
                         child: Text(
                           "Sign up",

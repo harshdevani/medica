@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
   final _visiblity = false.obs;
   bool get visiblity => _visiblity.value;
   set visiblity(bool value) => _visiblity.value = value;

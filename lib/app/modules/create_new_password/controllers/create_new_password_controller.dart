@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-class CreateNewPinController extends GetxController {
-  var otpcontroller = List.generate(4, (index) => TextEditingController());
+class CreateNewPasswordController extends GetxController {
+  final _visiblity = false.obs;
+  bool get visiblity => _visiblity.value;
+  set visiblity(bool value) => _visiblity.value = value;
+
+  final _visiblity1 = false.obs;
+  bool get visiblity1 => _visiblity1.value;
+  set visiblity1(bool value) => _visiblity1.value = value;
+
+  final _ischecked = false.obs;
+  bool get ischecked => _ischecked.value;
+  set ischecked(bool value) => _ischecked.value = value;
 
   void dialog() {
     showDialog(

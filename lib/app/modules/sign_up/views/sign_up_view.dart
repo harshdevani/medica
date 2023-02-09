@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -42,7 +43,7 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Center(
                   child: Text(
@@ -57,9 +58,41 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 TextFormField(
+                  inputFormatters: [LengthLimitingTextInputFormatter(10)],
+                  controller: controller.phoneController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(
+                      Icons.call,
+                      color: Colors.grey,
+                    ),
+                    hintText: "Mobile Number",
+                    fillColor: Colors.grey.shade100,
+                    filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: const BorderSide(
+                        color: Colors.white,
+                      ),
+                    ),
+                    hintStyle: GoogleFonts.urbanist(
+                      textStyle: const TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  controller: controller.emailController,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
@@ -87,7 +120,7 @@ class SignUpView extends GetView<SignUpController> {
                   validator: (value) => controller.emailvalidation(value),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Obx(
                   () => TextFormField(
@@ -136,7 +169,7 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -183,7 +216,7 @@ class SignUpView extends GetView<SignUpController> {
                       )),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
                 Row(
                   children: [
@@ -213,7 +246,7 @@ class SignUpView extends GetView<SignUpController> {
                   ],
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 15,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -252,7 +285,7 @@ class SignUpView extends GetView<SignUpController> {
                   ],
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 13,
                 ),
                 Center(
                   child: Row(

@@ -78,9 +78,10 @@ class ForgetPasswordView extends GetView<ForgetPasswordController> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("via SMS :"),
-                          Text("+1 111****99"),
+                        children: [
+                          const Text("via SMS :"),
+                          Text(
+                              controller.signUpController.phoneController.text),
                         ],
                       )
                     ],
@@ -130,9 +131,10 @@ class ForgetPasswordView extends GetView<ForgetPasswordController> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text("via Email :"),
-                          Text("abc*****gs@gmail.com"),
+                        children: [
+                          const Text("via Email :"),
+                          Text(
+                              controller.signUpController.emailController.text),
                         ],
                       )
                     ],

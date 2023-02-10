@@ -70,7 +70,7 @@ class SliderView extends GetView<SliderController> {
           ElevatedButton(
             onPressed: () {
               controller.value == 2
-                  ? Get.toNamed(Routes.SIGN_IN)
+                  ? Get.offAllNamed(Routes.SIGN_IN)
                   : controller.carouselController.nextPage();
             },
             style: ElevatedButton.styleFrom(

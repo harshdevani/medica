@@ -47,18 +47,8 @@ class FillProfileController extends GetxController {
   File? get img => _img.value;
   set img(File? value) => _img.value = value;
 
-  Future getimage() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (image == null) return;
-
-    final imageTemporary = File(image.path);
-
-    img = imageTemporary;
-    Get.back();
-  }
-
-  Future getphoto() async {
-    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+  Future getimage(ImageSource source) async {
+    final image = await ImagePicker().pickImage(source: source);
     if (image == null) return;
 
     final imageTemporary = File(image.path);

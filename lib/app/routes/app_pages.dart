@@ -12,6 +12,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/main_page/bindings/main_page_binding.dart';
+import '../modules/main_page/views/main_page_view.dart';
 import '../modules/otp_code/bindings/otp_code_binding.dart';
 import '../modules/otp_code/views/otp_code_view.dart';
 import '../modules/set_your_fingerprint/bindings/set_your_fingerprint_binding.dart';
@@ -30,7 +32,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.FILL_PROFILE;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.SET_YOUR_FINGERPRINT,
       page: () => const SetYourFingerprintView(),
       binding: SetYourFingerprintBinding(),
+    ),
+    GetPage(
+      name: _Paths.MAIN_PAGE,
+      page: () => const MainPageView(),
+      binding: MainPageBinding(),
     ),
   ];
 }

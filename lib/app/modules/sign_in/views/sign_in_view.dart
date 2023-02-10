@@ -13,11 +13,6 @@ class SigninView extends GetView<SignInController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(10),

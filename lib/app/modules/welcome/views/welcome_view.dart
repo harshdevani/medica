@@ -23,7 +23,7 @@ class WelcomeView extends GetView<WelcomeController> {
         Center(
           child: GestureDetector(
             onTap: () {
-              Get.toNamed(Routes.SLIDER);
+              Get.offAllNamed(Routes.SLIDER);
             },
             child: const Text(
               "Welcome to \n Medica 👋",

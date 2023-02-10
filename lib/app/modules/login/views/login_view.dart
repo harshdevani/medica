@@ -162,7 +162,7 @@ class LoginView extends GetView<LoginController> {
                     shape: const StadiumBorder(),
                     backgroundColor: Colors.indigo,
                   ),
-                  onPressed: controller.login,
+                  onPressed: () {},
                   child: Text(
                     "Sign in",
                     style: GoogleFonts.urbanist(

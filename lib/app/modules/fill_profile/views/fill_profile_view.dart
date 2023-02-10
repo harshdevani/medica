@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:medica/app/routes/app_pages.dart';
 
 import '../controllers/fill_profile_controller.dart';
@@ -26,41 +27,8 @@ class FillProfileView extends GetView<FillProfileController> {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               children: [
-                Stack(
-                  children: [
-                    Obx(() => ClipOval(
-                          child: Container(
-                            height: 200,
-                            width: 200,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(100),
-                            ),
-                            child: controller.img != null
-                                ? Image.file(
-                                    controller.img!,
-                                    width: 170,
-                                    height: 170,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Icon(
-                                    Icons.person,
-                                    color: Colors.grey[300],
-                                    size: 150,
-                                  ),
-                          ),
-                        )),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 155, left: 145),
-                      child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          color: Colors.indigo,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: IconButton(
-                            onPressed: () {
+                GestureDetector(
+                  onTap: () {
                               Get.bottomSheet(Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
@@ -72,7 +40,10 @@ class FillProfileView extends GetView<FillProfileController> {
                                     spacing: 90,
                                     children: [
                                       GestureDetector(
-                                        onTap: controller.getphoto,
+                                        onTap: () {
+                                          controller
+                                              .getimage(ImageSource.camera);
+                                        },
                                         child: Column(
                                           children: const [
                                             Icon(
@@ -91,7 +62,10 @@ class FillProfileView extends GetView<FillProfileController> {
                                         ),
                                       ),
                                       GestureDetector(
-                                        onTap: controller.getimage,
+                                        onTap: () {
+                                          controller
+                                              .getimage(ImageSource.gallery);
+                                        },
                                         child: Column(
                                           children: const [
                                             Icon(
@@ -114,13 +88,47 @@ class FillProfileView extends GetView<FillProfileController> {
                                 ),
                               ));
                             },
-                            icon: const Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                            )),
-                      ),
-                    )
-                  ],
+                  child: Stack(
+                    children: [
+                      Obx(() => ClipOval(
+                            child: Container(
+                              height: 200,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                color: Colors.grey[200],
+                                borderRadius: BorderRadius.circular(100),
+                              ),
+                              child: controller.img != null
+                                  ? Image.file(
+                                      controller.img!,
+                                      width: 170,
+                                      height: 170,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Icon(
+                                      Icons.person,
+                                      color: Colors.grey[300],
+                                      size: 150,
+                                    ),
+                            ),
+                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 155, left: 145),
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.indigo,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.edit,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 30,

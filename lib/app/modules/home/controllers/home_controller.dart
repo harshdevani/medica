@@ -14,7 +14,7 @@ class HomeController extends GetxController {
   void splesh() {
     Timer(
       const Duration(seconds: 3),
-      () => Get.to(const WelcomeView()),
+      () => Get.offAll(const WelcomeView()),
     );
   }
 }

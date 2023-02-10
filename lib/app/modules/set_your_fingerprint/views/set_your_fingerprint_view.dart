@@ -16,44 +16,85 @@ class SetYourFingerprintView extends GetView<SetYourFingerprintController> {
         foregroundColor: Colors.black,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          const Center(
-            child: Text(
-              '',
-              style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 15,
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  // controller.dialog();
-                },
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(170, 50),
-                    shape: const StadiumBorder()),
-                child: const Text(
-                  "Skip",
-                  style: TextStyle(fontSize: 15),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // controller.dialog();
-                },
-                style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(170, 50),
-                    shape: const StadiumBorder()),
-                child: const Text(
-                  "Continue",
-                  style: TextStyle(fontSize: 15),
-                ),
-              ),
-            ],
-          )
-        ],
+            const Text(
+              'Add a fingerprint to make your account more secure',
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 90,
+            ),
+            const Icon(
+              Icons.fingerprint,
+              size: 300,
+              color: Colors.indigo,
+            ),
+            const SizedBox(
+              height: 90,
+            ),
+            const Text(
+              'Please put your finger on the fingerprint scanner to get started.',
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 60,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Obx(() => ElevatedButton(
+                      onPressed: () {
+                        controller.onclick = true;
+                        controller.onclick1 = false;
+                        controller.dialog();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(170, 50),
+                          shape: const StadiumBorder(),
+                          backgroundColor: controller.onclick
+                              ? Colors.indigo
+                              : const Color.fromARGB(255, 214, 237, 255)),
+                      child: Text(
+                        "Skip",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: controller.onclick
+                                ? Colors.white
+                                : Colors.indigo),
+                      ),
+                    )),
+                Obx(() => ElevatedButton(
+                      onPressed: () {
+                        controller.onclick = false;
+                        controller.onclick1 = true;
+                      },
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(170, 50),
+                          shape: const StadiumBorder(),
+                          backgroundColor: controller.onclick1
+                              ? Colors.indigo
+                              : const Color.fromARGB(255, 214, 237, 255)),
+                      child: Text(
+                        "Continue",
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: controller.onclick1
+                                ? Colors.white
+                                : Colors.indigo),
+                      ),
+                    )),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

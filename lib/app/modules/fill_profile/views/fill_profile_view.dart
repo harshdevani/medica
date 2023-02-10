@@ -28,19 +28,28 @@ class FillProfileView extends GetView<FillProfileController> {
               children: [
                 Stack(
                   children: [
-                    Container(
-                      height: 200,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.grey[300],
-                        size: 150,
-                      ),
-                    ),
+                    Obx(() => ClipOval(
+                          child: Container(
+                            height: 200,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: controller.img != null
+                                ? Image.file(
+                                    controller.img!,
+                                    width: 170,
+                                    height: 170,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Icon(
+                                    Icons.person,
+                                    color: Colors.grey[300],
+                                    size: 150,
+                                  ),
+                          ),
+                        )),
                     Padding(
                       padding: const EdgeInsets.only(top: 155, left: 145),
                       child: Container(
@@ -51,7 +60,60 @@ class FillProfileView extends GetView<FillProfileController> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.bottomSheet(Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(25),
+                                  child: Wrap(
+                                    spacing: 90,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: controller.getphoto,
+                                        child: Column(
+                                          children: const [
+                                            Icon(
+                                              Icons.camera_alt_outlined,
+                                              size: 50,
+                                              color: Colors.grey,
+                                            ),
+                                            Text(
+                                              "open with camera",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: controller.getimage,
+                                        child: Column(
+                                          children: const [
+                                            Icon(
+                                              Icons.image_outlined,
+                                              size: 50,
+                                              color: Colors.grey,
+                                            ),
+                                            Text(
+                                              "open with gallery",
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                color: Colors.grey,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ));
+                            },
                             icon: const Icon(
                               Icons.edit,
                               color: Colors.white,

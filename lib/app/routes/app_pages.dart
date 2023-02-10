@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/create_new_password/bindings/create_new_password_binding.dart';
+import '../modules/create_new_password/views/create_new_password_view.dart';
 import '../modules/create_new_pin/bindings/create_new_pin_binding.dart';
 import '../modules/create_new_pin/views/create_new_pin_view.dart';
 import '../modules/fill_profile/bindings/fill_profile_binding.dart';
@@ -12,6 +14,8 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/otp_code/bindings/otp_code_binding.dart';
 import '../modules/otp_code/views/otp_code_view.dart';
+import '../modules/set_your_fingerprint/bindings/set_your_fingerprint_binding.dart';
+import '../modules/set_your_fingerprint/views/set_your_fingerprint_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
 import '../modules/sign_in/views/sign_in_view.dart';
 import '../modules/sign_up/bindings/sign_up_binding.dart';
@@ -26,7 +30,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.FORGET_PASSWORD;
+  static const INITIAL = Routes.FILL_PROFILE;
 
   static final routes = [
     GetPage(
@@ -78,6 +82,16 @@ class AppPages {
       name: _Paths.OTP_CODE,
       page: () => const OtpCodeView(),
       binding: OtpCodeBinding(),
+    ),
+    GetPage(
+      name: _Paths.CREATE_NEW_PASSWORD,
+      page: () => const CreateNewPasswordView(),
+      binding: CreateNewPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.SET_YOUR_FINGERPRINT,
+      page: () => const SetYourFingerprintView(),
+      binding: SetYourFingerprintBinding(),
     ),
   ];
 }

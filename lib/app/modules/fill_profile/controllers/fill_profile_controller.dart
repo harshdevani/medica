@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class FillProfileController extends GetxController {
@@ -38,5 +41,29 @@ class FillProfileController extends GetxController {
         firstDate: DateTime(1970),
         lastDate: DateTime.now());
     datecontroller.text = DateFormat('yyyy-MM-dd').format(datepicker!);
+  }
+
+  final _img = Rx<File?>(null);
+  File? get img => _img.value;
+  set img(File? value) => _img.value = value;
+
+  Future getimage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image == null) return;
+
+    final imageTemporary = File(image.path);
+
+    img = imageTemporary;
+    Get.back();
+  }
+
+  Future getphoto() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) return;
+
+    final imageTemporary = File(image.path);
+
+    img = imageTemporary;
+    Get.back();
   }
 }

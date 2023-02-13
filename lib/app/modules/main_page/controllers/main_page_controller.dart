@@ -1,23 +1,7 @@
 import 'package:get/get.dart';
+import 'package:medica/app/modules/fill_profile/controllers/fill_profile_controller.dart';
 
 class MainPageController extends GetxController {
-  //TODO: Implement MainPageController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  FillProfileController fillProfileController =
+      Get.find<FillProfileController>();
 }

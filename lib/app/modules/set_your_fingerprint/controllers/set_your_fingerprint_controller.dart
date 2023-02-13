@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:medica/app/routes/app_pages.dart';
 
 class SetYourFingerprintController extends GetxController {
   final _onclick = false.obs;
@@ -19,7 +20,7 @@ class SetYourFingerprintController extends GetxController {
         Future.delayed(
           const Duration(seconds: 3),
           () {
-            Navigator.of(context).pop(true);
+            Get.offAllNamed(Routes.MAIN_PAGE);
           },
         );
         return AlertDialog(

@@ -162,7 +162,9 @@ class LoginView extends GetView<LoginController> {
                     shape: const StadiumBorder(),
                     backgroundColor: Colors.indigo,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed(Routes.MAIN_PAGE);
+                  },
                   child: Text(
                     "Sign in",
                     style: GoogleFonts.urbanist(

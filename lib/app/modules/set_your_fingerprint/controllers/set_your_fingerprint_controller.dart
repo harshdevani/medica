@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
 import 'package:medica/app/routes/app_pages.dart';
 
 class SetYourFingerprintController extends GetxController {
@@ -62,4 +63,21 @@ class SetYourFingerprintController extends GetxController {
       },
     );
   }
+
+  // LocalAuthentication auth = LocalAuthentication();
+  // bool? _cancheckBiometric;
+  // late List<BiometricType> _availableBiometrics;
+  // String autherized = "Not autherized";
+
+  // Future<void> _checkBiometric() async {
+  //   bool cancheckBiometric;
+  //   try {
+  //     cancheckBiometric = await auth.canCheckBiometrics;
+  //   } on PlatformException catch (e) {
+  //     debugPrint(e.toString());
+  //   }
+  //   if (!mounted ) {
+
+  //   }
+  // }
 }

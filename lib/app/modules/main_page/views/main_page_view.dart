@@ -86,10 +86,26 @@ class MainPageView extends GetView<MainPageController> {
                   suffixIcon: const Icon(Icons.tune),
                   fillColor: Colors.grey[200],
                   filled: true,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                    ),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                   label: const Text("Search")),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 200,
+              width: 350,
+              decoration: BoxDecoration(
+                  color: Colors.blue[300],
+                  borderRadius: BorderRadius.circular(25)),
             )
           ],
         ),

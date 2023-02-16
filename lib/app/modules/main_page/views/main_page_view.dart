@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../controllers/main_page_controller.dart';
 
@@ -77,7 +78,7 @@ class MainPageView extends GetView<MainPageController> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(14.0),
         child: Column(
           children: [
             TextFormField(
@@ -100,16 +101,105 @@ class MainPageView extends GetView<MainPageController> {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               height: 200,
-              width: 350,
-              decoration: BoxDecoration(
-                  color: Colors.blue[300],
-                  borderRadius: BorderRadius.circular(25)),
+              width: MediaQuery.of(context).size.width,
+              child: PageView(
+                  controller: controller.pageController,
+                  children: const [
+                    Slider1(),
+                    Slider1(),
+                    Slider1(),
+                  ]),
+            ),
+            SmoothPageIndicator(
+              controller: controller.pageController,
+              count: 5,
+              axisDirection: Axis.horizontal,
+              effect: const ExpandingDotsEffect(
+                dotHeight: 10,
+                dotWidth: 10,
+              ),
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+class Slider1 extends StatelessWidget {
+  const Slider1({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Stack(children: [
+        Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Colors.indigo[300],
+              borderRadius: BorderRadius.circular(25),
+            )),
+        Padding(
+          padding: const EdgeInsets.only(left: 10, top: 15),
+          child: SizedBox(
+            height: 160,
+            width: 235,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Medical Checks!",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                const Expanded(
+                  child: Text(
+                    "Check your health condition regularly to minimize the incidence of disease in the future.",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: const StadiumBorder()),
+                    child: const Text(
+                      "Check Now",
+                      style: TextStyle(
+                          color: Colors.indigo, fontWeight: FontWeight.bold),
+                    )),
+              ],
+            ),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ClipRRect(
+              borderRadius:
+                  const BorderRadius.only(bottomRight: Radius.circular(25)),
+              child: Image.asset(
+                "assets/main_page_doctor.png",
+                height: 200,
+              ),
+            ),
+          ],
+        )
+      ]),
     );
   }
 }

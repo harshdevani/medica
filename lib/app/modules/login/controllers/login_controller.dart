@@ -1,6 +1,8 @@
-import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
   final _visiblity = false.obs;
@@ -14,21 +16,26 @@ class LoginController extends GetxController {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
 
-  Future<void> login() async {
+  Future<void> signin() async {
     try {
-      final dio = Dio();
       Get.dialog(
-        const Center(
-          child: CircularProgressIndicator(),
-        ),
+          const Center(
+            child: CircularProgressIndicator(),
+          ),
+          barrierDismissible: false);
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroller.text,
+        password: passwordcontroller.text,
       );
-      final response = await dio.post("https://d3wqw.mocklab.io/login", data: {
-        "email": emailcontroller.text,
-        "password": passwordcontroller.text
-      });
+      ScaffoldMessenger.of(Get.context!).showSnackBar(const SnackBar(
+        content: Text("Done"),
+      ));
       Get.back();
-      Get.snackbar("success", response.data["message"]);
+      print("****");
+      Get.offAllNamed(Routes.MAIN_PAGE);
     } catch (e) {
+      ScaffoldMessenger.of(Get.context!)
+          .showSnackBar(const SnackBar(content: Text("Error")));
       Get.back();
       debugPrint(e.toString());
     }

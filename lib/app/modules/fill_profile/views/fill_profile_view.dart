@@ -29,65 +29,63 @@ class FillProfileView extends GetView<FillProfileController> {
               children: [
                 GestureDetector(
                   onTap: () {
-                              Get.bottomSheet(Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Colors.white,
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(25),
-                                  child: Wrap(
-                                    spacing: 90,
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          controller
-                                              .getimage(ImageSource.camera);
-                                        },
-                                        child: Column(
-                                          children: const [
-                                            Icon(
-                                              Icons.camera_alt_outlined,
-                                              size: 50,
-                                              color: Colors.grey,
-                                            ),
-                                            Text(
-                                              "open with camera",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      GestureDetector(
-                                        onTap: () {
-                                          controller
-                                              .getimage(ImageSource.gallery);
-                                        },
-                                        child: Column(
-                                          children: const [
-                                            Icon(
-                                              Icons.image_outlined,
-                                              size: 50,
-                                              color: Colors.grey,
-                                            ),
-                                            Text(
-                                              "open with gallery",
-                                              style: TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                    Get.bottomSheet(Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(25),
+                        child: Wrap(
+                          spacing: 90,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                controller.getimage(ImageSource.camera);
+                              },
+                              child: Column(
+                                children: const [
+                                  Icon(
+                                    Icons.camera_alt_outlined,
+                                    size: 50,
+                                    color: Colors.grey,
                                   ),
-                                ),
-                              ));
-                            },
+                                  Text(
+                                    "open with camera",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                controller.getimage(ImageSource.gallery);
+                              },
+                              child: Column(
+                                children: const [
+                                  Icon(
+                                    Icons.image_outlined,
+                                    size: 50,
+                                    color: Colors.grey,
+                                  ),
+                                  Text(
+                                    "open with gallery",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ));
+                  },
                   child: Stack(
                     children: [
                       Obx(() => ClipOval(
@@ -134,6 +132,7 @@ class FillProfileView extends GetView<FillProfileController> {
                   height: 30,
                 ),
                 TextFormField(
+                  controller: controller.fullnameController,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Full Name",
@@ -160,6 +159,7 @@ class FillProfileView extends GetView<FillProfileController> {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: controller.nicknameController,
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     hintText: "Nickname",
@@ -186,8 +186,8 @@ class FillProfileView extends GetView<FillProfileController> {
                   height: 20,
                 ),
                 TextFormField(
-                  readOnly: true,
                   controller: controller.datecontroller,
+                  readOnly: true,
                   onTap: controller.datepicker,
                   decoration: InputDecoration(
                     suffixIcon: const Icon(
@@ -217,7 +217,8 @@ class FillProfileView extends GetView<FillProfileController> {
                   height: 20,
                 ),
                 TextFormField(
-                  keyboardType: TextInputType.emailAddress,
+                  readOnly: true,
+                  controller: controller.emailController,
                   decoration: InputDecoration(
                     suffixIcon: const Icon(
                       Icons.email_rounded,
@@ -286,6 +287,7 @@ class FillProfileView extends GetView<FillProfileController> {
                     if (controller.fromkey.currentState!.validate()) {
                       Get.toNamed(Routes.CREATE_NEW_PIN);
                     }
+                    controller.getdata();
                   },
                   style: ElevatedButton.styleFrom(
                       minimumSize: const Size(350, 60),

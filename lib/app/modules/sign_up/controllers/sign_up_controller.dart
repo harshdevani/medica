@@ -1,5 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:medica/app/routes/app_pages.dart';
 
 class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
@@ -44,4 +46,29 @@ class SignUpController extends GetxController {
   }
 
   final fromkey = GlobalKey<FormState>();
+
+  Future<void> signup() async {
+    try {
+      Get.dialog(
+          const Center(
+            child: CircularProgressIndicator(),
+          ),
+          barrierDismissible: false);
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      Get.back();
+      ScaffoldMessenger.of(Get.context!).showSnackBar(const SnackBar(
+        content: Text("Done"),
+      ));
+      Get.toNamed(Routes.FILL_PROFILE, arguments: emailController.text);
+    } catch (e) {
+      Get.back();
+      ScaffoldMessenger.of(Get.context!)
+          .showSnackBar(const SnackBar(content: Text("Done")));
+      debugPrint(e.toString());
+    }
+  }
 }

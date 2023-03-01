@@ -203,9 +203,13 @@ class SignUpView extends GetView<SignUpController> {
                         backgroundColor: Colors.indigo,
                       ),
                       onPressed: () {
-                        if (controller.fromkey.currentState!.validate()) {
-                          Get.toNamed(Routes.FILL_PROFILE);
+                        FocusScopeNode currentFocus = FocusScope.of(context);
+                        if (!currentFocus.hasPrimaryFocus) {
+                          currentFocus.unfocus();
                         }
+                        // if (controller.fromkey.currentState!.validate()) {
+                        controller.signup();
+                        //}
                       },
                       child: Text(
                         "Sign up",

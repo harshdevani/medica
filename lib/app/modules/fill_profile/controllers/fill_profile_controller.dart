@@ -1,11 +1,24 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class FillProfileController extends GetxController {
+  TextEditingController fullnameController = TextEditingController();
+  TextEditingController nicknameController = TextEditingController();
+  TextEditingController datecontroller = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
+
+  @override
+  void onInit() {
+    emailController.text = Get.arguments;
+    super.onInit();
+  }
+
   var gender = [
     "Male",
     "Female",
@@ -33,7 +46,6 @@ class FillProfileController extends GetxController {
     return null;
   }
 
-  TextEditingController datecontroller = TextEditingController();
   void datepicker() async {
     DateTime? datepicker = await showDatePicker(
         context: Get.context!,
@@ -55,5 +67,27 @@ class FillProfileController extends GetxController {
 
     img = imageTemporary;
     Get.back();
+  }
+
+  Future<void> getdata() async {
+    try {
+      Get.dialog(
+          const Center(
+            child: CircularProgressIndicator(),
+          ),
+          barrierDismissible: false);
+      await FirebaseFirestore.instance.collection("users").doc().set({
+        "Full name": fullnameController.text,
+        "Nickname": nicknameController.text,
+        "Date of Birth": datecontroller.text,
+        "Email": emailController.text,
+      });
+      Get.back();
+      ScaffoldMessenger.of(Get.context!)
+          .showSnackBar(const SnackBar(content: Text("Done")));
+    } catch (e) {
+      Get.back();
+      debugPrint(e.toString());
+    }
   }
 }

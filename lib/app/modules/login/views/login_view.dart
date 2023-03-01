@@ -163,7 +163,11 @@ class LoginView extends GetView<LoginController> {
                     backgroundColor: Colors.indigo,
                   ),
                   onPressed: () {
-                    Get.offAllNamed(Routes.MAIN_PAGE);
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+                    if (!currentFocus.hasPrimaryFocus) {
+                      currentFocus.unfocus();
+                    }
+                    controller.signin();
                   },
                   child: Text(
                     "Sign in",

@@ -6,7 +6,7 @@ import 'package:medica/app/routes/app_pages.dart';
 class SignUpController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController mobilenumberController = TextEditingController();
 
   final _visiblity = false.obs;
   bool get visiblity => _visiblity.value;
@@ -63,7 +63,10 @@ class SignUpController extends GetxController {
       ScaffoldMessenger.of(Get.context!).showSnackBar(const SnackBar(
         content: Text("Done"),
       ));
-      Get.toNamed(Routes.FILL_PROFILE, arguments: emailController.text);
+      Get.toNamed(Routes.FILL_PROFILE, arguments: {
+        "Email": emailController.text,
+        "Mobile number": mobilenumberController.text
+      });
     } catch (e) {
       Get.back();
       ScaffoldMessenger.of(Get.context!)

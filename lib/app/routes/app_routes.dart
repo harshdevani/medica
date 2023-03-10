@@ -17,6 +17,7 @@ abstract class Routes {
   static const SET_YOUR_FINGERPRINT = _Paths.SET_YOUR_FINGERPRINT;
   static const DELETE = _Paths.DELETE;
   static const MAIN_PAGE = _Paths.MAIN_PAGE;
+  static const SPLESH_SCREEN = _Paths.SPLESH_SCREEN;
 }
 
 abstract class _Paths {
@@ -35,4 +36,5 @@ abstract class _Paths {
   static const SET_YOUR_FINGERPRINT = '/set-your-fingerprint';
   static const DELETE = '/delete';
   static const MAIN_PAGE = '/main-page';
+  static const SPLESH_SCREEN = '/splesh-screen';
 }

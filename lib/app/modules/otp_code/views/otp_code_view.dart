@@ -27,7 +27,7 @@ class OtpCodeView extends GetView<OtpCodeController> {
             ),
             Text(
               controller.forgetPasswordController.button1
-                  ? "Code has been send to ${controller.signUpController.phoneController.text}"
+                  ? "Code has been send to ${controller.signUpController.mobilenumberController.text}"
                   : "Code has been send to ${controller.signUpController.emailController.text}",
               style: const TextStyle(fontSize: 20),
             ),

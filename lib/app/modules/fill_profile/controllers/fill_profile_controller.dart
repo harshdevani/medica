@@ -8,14 +8,17 @@ import 'package:intl/intl.dart';
 
 class FillProfileController extends GetxController {
   TextEditingController fullnameController = TextEditingController();
-  TextEditingController nicknameController = TextEditingController();
   TextEditingController datecontroller = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController genderController = TextEditingController();
+  TextEditingController mobilenumberController = TextEditingController();
 
+  Map data = {};
   @override
   void onInit() {
-    emailController.text = Get.arguments;
+    data = Get.arguments;
+    emailController.text = data["Email"].toString();
+    mobilenumberController.text = data["Mobile number"].toString();
     super.onInit();
   }
 
@@ -78,9 +81,9 @@ class FillProfileController extends GetxController {
           barrierDismissible: false);
       await FirebaseFirestore.instance.collection("users").doc().set({
         "Full name": fullnameController.text,
-        "Nickname": nicknameController.text,
         "Date of Birth": datecontroller.text,
         "Email": emailController.text,
+        "Mobile number": mobilenumberController.text
       });
       Get.back();
       ScaffoldMessenger.of(Get.context!)

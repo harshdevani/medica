@@ -10,32 +10,7 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/logo.png",
-                height: 70,
-                width: 70,
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              const Text(
-                "Medica",
-                style: TextStyle(fontSize: 50),
-              )
-            ],
-          ),
-          const SpinKitCircle(
-            size: 60,
-            color: Colors.indigo,
-          )
-        ],
-      ),
+      
     );
   }
 }

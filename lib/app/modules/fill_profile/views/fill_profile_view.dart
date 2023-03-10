@@ -159,10 +159,13 @@ class FillProfileView extends GetView<FillProfileController> {
                   height: 20,
                 ),
                 TextFormField(
-                  controller: controller.nicknameController,
-                  keyboardType: TextInputType.name,
+                  controller: controller.mobilenumberController,
+                  readOnly: true,
                   decoration: InputDecoration(
-                    hintText: "Nickname",
+                    suffixIcon: const Icon(
+                      Icons.call,
+                      color: Colors.grey,
+                    ),
                     fillColor: Colors.grey.shade100,
                     filled: true,
                     border: OutlineInputBorder(
@@ -180,7 +183,6 @@ class FillProfileView extends GetView<FillProfileController> {
                       ),
                     ),
                   ),
-                  validator: (value) => controller.namevalidation(value),
                 ),
                 const SizedBox(
                   height: 20,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -140,6 +141,9 @@ class MainPageView extends GetView<MainPageController> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 15,
+            ),
             SizedBox(
               height: 200,
               child: GridView.builder(
@@ -152,21 +156,52 @@ class MainPageView extends GetView<MainPageController> {
                   return Column(
                     children: [
                       Container(
+                        height: 60,
+                        width: 60,
                         decoration: BoxDecoration(
-                            color: Colors.blue,
+                            color: Colors.blue[50],
                             borderRadius: BorderRadius.circular(50)),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(controller.icons[index]),
-                            Text(controller.iconsname[index]),
-                          ],
-                        ),
+                        child: controller.icons[index] != controller.icons[1]
+                            ? Icon(
+                                controller.icons[index],
+                                color: Colors.indigo,
+                              )
+                            : Center(
+                                child: FaIcon(
+                                  controller.icons[index],
+                                  color: Colors.indigo,
+                                ),
+                              ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        controller.iconsname[index],
                       ),
                     ],
                   );
                 },
               ),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  "Top Doctors",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "See All",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.indigo),
+                ),
+              ],
             ),
           ],
         ),

@@ -80,8 +80,8 @@ class ForgetPasswordView extends GetView<ForgetPasswordController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text("via SMS :"),
-                          Text(
-                              controller.signUpController.phoneController.text),
+                          Text(controller
+                              .signUpController.mobilenumberController.text),
                         ],
                       )
                     ],

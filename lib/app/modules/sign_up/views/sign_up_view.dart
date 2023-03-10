@@ -62,7 +62,7 @@ class SignUpView extends GetView<SignUpController> {
                 ),
                 TextFormField(
                   inputFormatters: [LengthLimitingTextInputFormatter(10)],
-                  controller: controller.phoneController,
+                  controller: controller.mobilenumberController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(

@@ -24,6 +24,8 @@ import '../modules/sign_up/bindings/sign_up_binding.dart';
 import '../modules/sign_up/views/sign_up_view.dart';
 import '../modules/slider/bindings/slider_binding.dart';
 import '../modules/slider/views/slider_view.dart';
+import '../modules/splesh_screen/bindings/splesh_screen_binding.dart';
+import '../modules/splesh_screen/views/splesh_screen_view.dart';
 import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -32,7 +34,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static const INITIAL = Routes.MAIN_PAGE;
 
   static final routes = [
     GetPage(
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.MAIN_PAGE,
       page: () => const MainPageView(),
       binding: MainPageBinding(),
+    ),
+    GetPage(
+      name: _Paths.SPLESH_SCREEN,
+      page: () => const SpleshScreenView(),
+      binding: SpleshScreenBinding(),
     ),
   ];
 }

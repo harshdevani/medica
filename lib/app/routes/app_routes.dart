@@ -18,6 +18,7 @@ abstract class Routes {
   static const DELETE = _Paths.DELETE;
   static const MAIN_PAGE = _Paths.MAIN_PAGE;
   static const SPLESH_SCREEN = _Paths.SPLESH_SCREEN;
+  static const PROFILE_PAGE = _Paths.PROFILE_PAGE;
 }
 
 abstract class _Paths {
@@ -37,4 +38,5 @@ abstract class _Paths {
   static const DELETE = '/delete';
   static const MAIN_PAGE = '/main-page';
   static const SPLESH_SCREEN = '/splesh-screen';
+  static const PROFILE_PAGE = '/profile-page';
 }

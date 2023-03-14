@@ -8,7 +8,7 @@ import '../controllers/splesh_screen_controller.dart';
 class SpleshScreenView extends GetView<SpleshScreenController> {
   const SpleshScreenView({Key? key}) : super(key: key);
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: AppBar(
         title: const Text('SpleshScreenView'),

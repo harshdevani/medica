@@ -16,6 +16,8 @@ import '../modules/main_page/bindings/main_page_binding.dart';
 import '../modules/main_page/views/main_page_view.dart';
 import '../modules/otp_code/bindings/otp_code_binding.dart';
 import '../modules/otp_code/views/otp_code_view.dart';
+import '../modules/profile_page/bindings/profile_page_binding.dart';
+import '../modules/profile_page/views/profile_page_view.dart';
 import '../modules/set_your_fingerprint/bindings/set_your_fingerprint_binding.dart';
 import '../modules/set_your_fingerprint/views/set_your_fingerprint_view.dart';
 import '../modules/sign_in/bindings/sign_in_binding.dart';
@@ -34,7 +36,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.MAIN_PAGE;
+  static const INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(
@@ -106,6 +108,11 @@ class AppPages {
       name: _Paths.SPLESH_SCREEN,
       page: () => const SpleshScreenView(),
       binding: SpleshScreenBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE_PAGE,
+      page: () => const ProfilePageView(),
+      binding: ProfilePageBinding(),
     ),
   ];
 }
